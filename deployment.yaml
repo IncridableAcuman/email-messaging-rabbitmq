@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-app
+        image: java-app:latest
+        ports:
+         - containerPort: 8080
+        env:
+          - name: SPRING_MAIL_SMTP_HOST
+            value: "smtp.gmail.com"
+          - name: SPRING_MAIL_SMTP_PORT
+            value: "587"
+          - name: SPRING_MAIL_SMTP_USERNAME
+            value: "abdusharipovizzat03@gmail.com"
+          - name: SPRING_MAIL_SMTP_PASSWORD
+            value: "kjuevjnlojagsloa"
+          - name: SPRING_RABBITMQ_HOST
+            value: "rabbitmq"
+          - name: SPRING_RABBITMQ_PORT
+            value: "5672"
+          - name: SPRING_RABBITMQ_STREAM_USERNAME
+            value: "izzatbek"
+          - name: SPRING_RABBITMQ_STREAM_PASSWORD
+            value: "izzatbek"

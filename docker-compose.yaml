@@ -4,23 +4,22 @@ services:
     container_name: rabbitmq
     restart: always
     environment:
-      - SPRING_RABBITMQ_HOST=localhost
-      - SPRING_RABBITMQ_PORT=587
-      - SPRING_RABBITMQ_STREAM_USERNAME=izzatbek
-      - SPRING_RABBITMQ_STREAM_PASSWORD=izzatbek
+      RABBITMQ_DEFAULT_USER: izzatbek
+      RABBITMQ_DEFAULT_PASS: izzatbek
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     ports:
-      - "5672:5672"
+      - "5673:5672"
+      - "15673:15672"
   app:
     build: .
     container_name: demo-app
     restart: always
     environment:
-      - SPRING_MAIL_SMTP_HOST=smtp.gmail.container_name
+      - SPRING_MAIL_SMTP_HOST=smtp.gmail.com
       - SPRING_MAIL_SMTP_PORT=587
-      - SPRING_MAIL_SMTP_USERNAME=your-email@gmail.com
-      - SPRING_MAIL_SMTP_PASSWORD=your-app-password
+      - SPRING_MAIL_SMTP_USERNAME=youremail@gmail.com
+      - SPRING_MAIL_SMTP_PASSWORD=yourpassword
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_STREAM_USERNAME=izzatbek
@@ -31,4 +30,4 @@ services:
       - rabbitmq
 
 volumes:
-  rabbitmq_data: {}
+  rabbitmq_data:
