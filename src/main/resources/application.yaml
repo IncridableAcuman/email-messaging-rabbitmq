@@ -3,13 +3,13 @@ spring:
     host: localhost
     port: 5672
     stream:
-      username: izzatbek
-      password: izzatbek
+      username: username
+      password: username
   mail:
     host: smtp.gmail.com
     port: 587
-    username: abdusharipovizzat03@gmail.com
-    password: "imqxgmknlitptslp"
+    username: your-app-password
+    password: your-app-password
     properties:
       mail:
         smtp:
